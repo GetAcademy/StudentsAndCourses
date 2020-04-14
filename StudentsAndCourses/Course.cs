@@ -6,17 +6,18 @@ namespace StudentsAndCourses
 {
     public class Course
     {
-        private readonly List<Student> _students;
+        private readonly HashSet<Student> _students;
         public string Name { get; }
 
         public Course(string name)
         {
-            _students = new List<Student>();
+            _students = new HashSet<Student>();
             Name = name;
         }
 
         public void RegisterStudent(Student student, bool notifyStudent = true)
         {
+            if (student == null) return;
             _students.Add(student);
             if (notifyStudent) student.RegisterCourse(this, false);
         }

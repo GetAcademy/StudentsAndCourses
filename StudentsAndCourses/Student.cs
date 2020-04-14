@@ -15,15 +15,10 @@ namespace StudentsAndCourses
             Name = name;
         }
 
-        public void RegisterCourse(Course course)
+        public void RegisterCourse(Course course, bool notifyCourse = true)
         {
             _courses.Add(course);
-            course.RegisterStudent2(this);
-        }
-
-        public void RegisterCourse2(Course course)
-        {
-            _courses.Add(course);
+            if (notifyCourse) course.RegisterStudent(this, false);
         }
 
         public string GetCourses()
